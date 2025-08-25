@@ -31,11 +31,11 @@ $obPagination = new Pagination($quantidadeVagas, $_GET['pagina'] ?? 1 , 3);
 
 $vagas = Vaga:: getVagas($where, null,$obPagination->getLimit());
     
-
+/*
 echo $quantidadeVagas."<pre>";  
 print_r($obPagination->getLimit()); 
 echo "</pre>"; 
-
+*/
 
 
 include __DIR__.'/../includes/header.php';

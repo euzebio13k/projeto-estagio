@@ -5,6 +5,11 @@ require __DIR__.'/../vendor/autoload.php';
 define('TITLE','Cadastrar aluno');
 
  use \App\Entity\Aluno;
+ use \App\Session\Login;
+
+ //OBRIGA O USUARIO A ESTAR LOGADO
+ Login::requereLogin();
+ 
  $obAluno= new Aluno;
 
 

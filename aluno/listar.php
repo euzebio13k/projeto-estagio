@@ -4,6 +4,10 @@ require __DIR__.'/../vendor/autoload.php';
 
 
 use \App\Entity\Aluno;
+use \App\Session\Login;
+
+ //OBRIGA O USUARIO A ESTAR LOGADO
+ Login::requereLogin();
 
 
 $obAlunos = Aluno:: getAlunos();

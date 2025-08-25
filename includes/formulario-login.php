@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     
-                    <button type="submit" name="acao" value="logar" class="btn btn-primary">Entrar</button>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
                 </div>
             </form>
         </div>

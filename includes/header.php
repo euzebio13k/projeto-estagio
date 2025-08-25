@@ -1,3 +1,13 @@
+<?php
+  use App\Session\Login;
+
+  $usuarioLogado = Login::getUsuarioLogado();
+  $usuario = $usuarioLogado ? 
+  '<button type="button" class="btn btn-primary me-2">'.$usuarioLogado['nome'].'</button>
+  <button type="button" class="btn btn-warning me-2"><a href="/si/logout.php">Sair</a></button>' : 
+  '<button type="button" class="btn btn-primary me-2">Visitante</button>
+  <button type="button" class="btn btn-success me-2"><a href="/si/login.php">Entar</a></button>'
+  ?>
 <!doctype html>
 <html lang="pt"  data-bs-theme="auto">
   <head>
@@ -63,8 +73,7 @@
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
+          <?=$usuario?>
         </div>
       </div>
     </div>
