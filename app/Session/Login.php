@@ -9,8 +9,6 @@ class Login{
             
             session_start();
         }
-    
-
     }
     public static function getUsuarioLogado(){
         

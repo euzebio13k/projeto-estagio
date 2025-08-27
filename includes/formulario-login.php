@@ -4,7 +4,7 @@
 
 <div class="jumbotron text-dark"></div>
     <div class="row">
-        <div class="col">
+        <div class="col-6 m-auto">
             <form method="POST">
                 <h2>Login</h2>
                 <?=$msg?>
@@ -22,8 +22,6 @@
                 </div>
             </form>
         </div>
-        <div class="col">
-            
-        </div>
+        
     </div>
 </div>

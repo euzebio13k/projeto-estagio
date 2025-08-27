@@ -88,5 +88,13 @@ public static function getAlunos($where= null, $order = null, $limit = null){
                                       -> fetchObject(self::class);
 
     }
+    public static function getQuantidadeAlunos($where = null)
+    {
+        return (new DataBase('alunos'))->select($where, null, null, 'COUNT(*) as qtd')
+            ->fetchObject()
+            ->qtd;
+
+
+    }
 
 }
