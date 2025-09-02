@@ -8,7 +8,7 @@ use \App\Session\Login;
 use \App\Db\Pagination;
 
  //OBRIGA O USUARIO A ESTAR LOGADO
- Login::requereLogin();
+ //Login::requereLogin();
 
 
 //Busca
@@ -25,7 +25,7 @@ $condicoes = array_filter($condicoes);
 $where = implode(' AND ',$condicoes);
 
 $quantidadeAlunos = Aluno::getQuantidadeAlunos($where);
-$obPagination = new Pagination($quantidadeAlunos, $_GET['pagina'] ?? 1 , 2);
+$obPagination = new Pagination($quantidadeAlunos, $_GET['pagina'] ?? 1 , 10);
 
 $obAlunos = Aluno:: getAlunos($where, null,$obPagination->getLimit());
 /*

@@ -13,12 +13,18 @@ INSERT INTO `vagas` (`id`, `titulo`, `descricao`, `ativo`, `data`) VALUES
 create table alunos(
   id int not null auto_increment primary key,
   nome varchar(255),
-  cpf varchar(14),
+  cpf varchar(11) unique,
+  matricula varchar(255) unique,
   telefone varchar(14),
-  email_pessoal varchar(255),
-  email_institucional varchar(255),
+  email_pessoal varchar(255) unique,
+  email_institucional varchar(255) unique,
   dtn date,
   curso  varchar(255),
-  periodo varchar(2)
+  periodo varchar(2),
+  senha varchar(255)
 );
+/*
 ALTER TABLE alunos ADD COLUMN senha varchar(255);
+ALTER TABLE alunos ADD COLUMN matricula varchar(255);
+ALTER TABLE alunos MODIFY COLUMN TELEFONE varchar(255);
+*/

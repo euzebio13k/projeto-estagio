@@ -8,7 +8,7 @@ define('TITLE','Cadastrar aluno');
  use \App\Session\Login;
 
  //OBRIGA O USUARIO A ESTAR LOGADO
- Login::requereLogin();
+ //Login::requereLogin();
  
  $obAluno= new Aluno;
 

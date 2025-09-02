@@ -13,9 +13,9 @@ if(isset($_POST['cpf'], $_POST['senha'])){
    $obAluno = Aluno::getAlunoCpf($_POST['cpf']);
    
 
-   //if(!$obAluno instanceof Aluno || !password_verify($_POST['senha'], $obAluno->senha)){   
+   if(!$obAluno instanceof Aluno || !password_verify($_POST['senha'], $obAluno->senha)){   
    
-   if(!$obAluno instanceof Aluno || strcmp($_POST['senha'], $obAluno->senha) != 0){
+   //if(!$obAluno instanceof Aluno || strcmp($_POST['senha'], $obAluno->senha) != 0){
       $msg = "Usuario ou senha incorretos!";
    }else{
       

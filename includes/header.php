@@ -6,7 +6,7 @@
   '<button type="button" class="btn btn-primary me-2">'.$usuarioLogado['nome'].'</button>
   <button type="button" class="btn btn-warning me-2"><a href="/si/logout.php">Sair</a></button>' : 
   '<button type="button" class="btn btn-primary me-2">Visitante</button>
-  <button type="button" class="btn btn-success me-2"><a href="/si/login.php">Entar</a></button>'
+  <button type="button" class="btn btn-success me-2"><a href="/si/login.php">Entrar</a></button>'
   ?>
 <!doctype html>
 <html lang="pt"  data-bs-theme="auto">

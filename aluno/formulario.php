@@ -47,6 +47,10 @@
     <label>Data de Nascimento</label>
     <input type="date" class="form-control" name="dtn" value="<?=$obAluno->dtn?>">
 </div>
+<div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" name="senha" class="form-control" required>
+                </div>
 
     <div class="form-group">
         <button type="submit" class="btn btn-success">Enviar</button>

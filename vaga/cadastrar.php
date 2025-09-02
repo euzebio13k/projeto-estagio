@@ -8,7 +8,7 @@ define('TITLE','Cadastrar vaga');
  use \App\Session\Login;
 
  //OBRIGA O USUARIO A ESTAR LOGADO
- Login::requereLogin();
+ Login::requereLogin($usuarioLogado['nivel']);
 
  $obVaga= new Vaga;
 

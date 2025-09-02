@@ -37,15 +37,14 @@
     unset($_GET['status']);
     unset($_GET['pagina']);
     $gets = http_build_query($_GET);
-    echo "<pre>";  
-print_r($gets); 
-echo "</pre>"; 
+    
     //Paginação
     $paginacao = '';
     $paginas = $obPagination->getPages();
     foreach($paginas as $key => $pagina){
         $class = $pagina['atual'] ? 'btn-primary' : 'btn-light';
-        $paginacao .= '<a href="?pagina='.$pagina['pagina'].'&'.$gets.'"><button type="button" class="btn '.$class.'">'.$pagina['pagina'].'</button></a>';
+        $paginacao .= '<a href="?pagina='.$pagina['pagina'].'&'.$gets.'">
+        <button type="button" class="btn '.$class.'">'.$pagina['pagina'].'</button></a>';
     }
                                                   
 ?>
