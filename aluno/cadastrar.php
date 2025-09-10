@@ -6,16 +6,24 @@ define('TITLE','Cadastrar aluno');
 
  use \App\Entity\Aluno;
  use \App\Session\Login;
+ use \App\File\Upload;
 
  //OBRIGA O USUARIO A ESTAR LOGADO
  //Login::requereLogin();
  
  $obAluno= new Aluno;
 
-
+ if(isset($_FILES['arquivo']['error'])){
+       echo "<pre>";  
+   print_r($_FILES['arquivo']); 
+   echo "</pre>";
+   //exit;
+        $upload = new Upload($_FILES['arquivo']);
+        $msg = $upload->upload(__DIR__.'/../images/alunos');
+        
+   }
 //VALIDAÇÃO DO POST
        if(isset($_POST['nome'], $_POST['cpf'],$_POST['curso'],$_POST['periodo'])){
-
               
               $obAluno-> nome                = $_POST['nome'] ;
               $obAluno-> cpf                 = $_POST['cpf'];
@@ -27,11 +35,9 @@ define('TITLE','Cadastrar aluno');
               $obAluno-> dtn                 = $_POST['dtn'];
               $obAluno-> senha                 = password_hash($_POST['senha'], PASSWORD_DEFAULT);
               $obAluno-> cadastrar() ;
-
               header('location: listar.php?status=sucess');
               exit;
        }
-
 
 include __DIR__.'/../includes/header.php';
 include __DIR__.'/formulario.php';

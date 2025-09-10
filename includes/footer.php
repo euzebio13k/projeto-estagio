@@ -61,7 +61,7 @@
               <use xlink:href="#facebook" />
             </svg></a></li>
       </ul>
-      <button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
         aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
         <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
           <use href="#circle-half"></use>
@@ -110,6 +110,7 @@
   </div>
 </div>
 <!-- FIM DO ROPDAPÉ -->
+<script src="/sistemas/js/color-modes.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

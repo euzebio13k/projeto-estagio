@@ -1,13 +1,13 @@
-<main>
-
-
+<main class="container card mt-3">
+    <div class="card-header  text-center">
+        <h4 class="card-title" id="striped-row-layout-icons"><?=TITLE?></h4>
+    </div>
+    <div class="card-body">
 <section>
     <a href="listar.php">
         <button class="btn btn-success"> Voltar</button>
     </a>
 </section>
-
-<h2  class="mt-3"><?=TITLE?></h2>
 
 <form method="post">
 
@@ -44,5 +44,5 @@
     
     </div>
 </form>
-
+</div>
 </main>

@@ -20,8 +20,7 @@ if(isset($_POST['cpf'], $_POST['senha'])){
    }else{
       
       Login::login($obAluno);
-      
-      
+            
    }
    
 }

@@ -6,7 +6,14 @@ define('TITLE','Editar aluno');
 
  use \App\Entity\Aluno;
  use \App\Session\Login;
+ use \App\File\Upload;
 
+ //OBRIGA O USUARIO A ESTAR LOGADO
+ //Login::requereLogin();
+ 
+ $obAluno= new Aluno;
+
+ 
  //OBRIGA O USUARIO A ESTAR LOGADO
  Login::requereLogin();
 
@@ -39,10 +46,16 @@ exit;*/
           $obAluno-> curso               =$_POST['curso'];
           $obAluno-> periodo             =$_POST['periodo'] ;
           $obAluno-> dtn                 =$_POST['dtn'];
-          $obAluno-> atualizar() ;
+          if(isset($_FILES['arquivo'])){
+       
+            $upload = new Upload($_FILES['arquivo']);
+            $msg = $upload->upload(__DIR__.'/../images/alunos',$obAluno->cpf);
+            
+         }
+         $obAluno-> atualizar() ;
 
-              header('location: listar.php?status=sucess');
-              exit;
+         header('location: listar.php?status=sucess');
+         exit;
 }
 
 

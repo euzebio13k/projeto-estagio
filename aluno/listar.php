@@ -8,15 +8,19 @@ use \App\Session\Login;
 use \App\Db\Pagination;
 
  //OBRIGA O USUARIO A ESTAR LOGADO
- //Login::requereLogin();
+ Login::requereLogin();
 
 
 //Busca
 $busca = filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_STRING);
+$curso = filter_input(INPUT_GET, 'curso', FILTER_SANITIZE_STRING);
+$periodo = filter_input(INPUT_GET, 'periodo', FILTER_SANITIZE_STRING);
 
 //Condições SQL
 $condicoes = [
-    strlen($busca) ? 'titulo LIKE "%'.str_replace(' ','%', $busca).'%"' : null
+    strlen($busca) ? 'nome LIKE "%'.str_replace(' ','%', $busca).'%"' : null,
+    strlen($curso) ? 'curso LIKE "%'.str_replace(' ','%', $curso).'%"' : null,
+    strlen($periodo) ? 'periodo LIKE "%'.str_replace(' ','%', $periodo).'%"' : null
 
 ];
 //Remove posições vazias
@@ -30,7 +34,7 @@ $obPagination = new Pagination($quantidadeAlunos, $_GET['pagina'] ?? 1 , 10);
 $obAlunos = Aluno:: getAlunos($where, null,$obPagination->getLimit());
 /*
 echo "<pre>";  
-print_r($obAlunos); 
+print_r($obPagination->getPages()); 
 echo "</pre>"; 
 */
 include __DIR__.'/../includes/header.php';
