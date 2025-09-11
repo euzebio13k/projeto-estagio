@@ -8,19 +8,23 @@ define('TITLE','Cadastrar vaga');
  use \App\Session\Login;
 
  //OBRIGA O USUARIO A ESTAR LOGADO
- Login::requereLogin($usuarioLogado['nivel']);
+ Login::requereLogin();
 
- $obVaga= new Vaga;
+ $vaga= new Vaga;
 
 
 //VALIDAÇÃO DO POST
-       if(isset($_POST['titulo'], $_POST['descricao'],$_POST['ativo'])){
+       if(isset($_POST['titulo'], $_POST['descricao'])){
 
               
-              $obVaga-> titulo     =$_POST['titulo'] ;
-              $obVaga-> descricao  =$_POST['descricao'];
-              $obVaga-> ativo      =$_POST['ativo'];
-              $obVaga-> cadastrar() ;
+              $vaga->id =  $_GET['id']; 
+              $vaga->titulo =  $_POST['titulo']; 
+              $vaga->descricao =  $_POST['descricao']; 
+              $vaga->quantidade =  $_POST['quantidade'];
+              $vaga->remuneracao =  $_POST['remuneracao'];
+              $vaga->data_abertura =  $_POST['data_abertura'];
+              $vaga->data_fechamento =  $_POST['data_fechamento']; 
+              $vaga-> cadastrar() ;
 
               header('location: listar.php?status=sucess');
               exit;

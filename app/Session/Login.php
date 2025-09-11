@@ -23,7 +23,8 @@ class Login{
         $_SESSION['usuario'] = [
             'id'   => $obAluno->id,
             'nome' => $obAluno->nome,
-            'cpf'  => $obAluno->cpf
+            'cpf'  => $obAluno->cpf,
+            'nivel'=> $obAluno->nivel
         ];
 
         header('Location: /si/index.php');

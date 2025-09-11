@@ -1,23 +1,20 @@
 <?php
-
 $mensagem = '';
 if (isset($_GET['status'])) {
     switch ($_GET['status']) {
         case 'sucess':
             $mensagem = '<div class="alert alert-sucess">Ação executada com sucesso!</div>';
             break;
-
         case 'error':
             $mensagem = '<div class="alert alert-danger">Ação não executada!</div>';
             break;
     }
 }
-
 $resultados = '';
 foreach ($obAlunos as $aluno) {
     $resultados .= '<tr>
-                            <td>' . $aluno->id . '</td>
                             <td>' . $aluno->nome . '</td>
+                            <td>' . $aluno->matricula . '</td>
                             <td>' . $aluno->telefone . '</td>
                             <td>' . $aluno->email_institucional . '</td>
                             <td>' . $aluno->curso . '</td>
@@ -90,28 +87,27 @@ $paginacao .= '<li class="page-item"><a class="page-link" href="?pagina='.count(
             <form method="GET">
                 <div class="row my-4">
                     <div class="col">
-                        <label>Buscar por titulo</label>
-                        <input type="search" class="form-control" placeholder="Pesquisar" name="busca"
-                            value="<?= $busca ?>">
+                        <label>Pesquisar por Nome</label>
+                        <input type="search" class="form-control" placeholder="Pesquisar" name="busca" value="<?= $busca ?>">
                     </div>
                     <div class="col">
-                        <label>Status</label>
-                        <select class="form-control" name="curso" id="curso">
-                            <option value="">Selecione o Curso</option>
-                            <option value="Técnico em Administração - Integrada - Série Anual" <?= $curso == 'Técnico em Administração - Integrada - Série Anual' ? 'selected' : '' ?>>Técnico em Administração -
-                                Integrada - Série Anual</option>
+                        <label>Pesquisar por Curso</label>
+                        <select class="form-select" name="curso" id="curso">
+                            <option value=""></option>
+                            <option value="Técnico em Administração - Integrada - Série Anual" <?= $curso == 'Técnico em Administração - Integrada' ? 'selected' : '' ?>>
+                                Técnico em Administração - Integrada</option>
                             <option
-                                value="Técnico em Meio Ambiente - Integrada - Série Anual<?= $curso == 'Técnico em Meio Ambiente - Integrada - Série Anual' ? 'selected' : '' ?>">
-                                Técnico em Meio Ambiente - Integrada - Série Anual</option>
+                                value="Técnico em Meio Ambiente - Integrada - Série Anual<?= $curso == 'Técnico em Meio Ambiente - Integrada' ? 'selected' : '' ?>">
+                                Técnico em Meio Ambiente - Integrada</option>
                             <option
-                                value="Técnico em Informática para Internet - Integrada - Série Anual<?= $curso == 'Técnico em Informática para Internet - Integrada - Série Anual' ? 'selected' : '' ?>">
-                                Técnico em Informática para Internet - Integrada - Série Anual</option>
+                                value="Técnico em Informática para Internet - Integrada - Série Anual<?= $curso == 'Técnico em Informática para Internet - Integrada' ? 'selected' : '' ?>">
+                                Técnico em Informática para Internet - Integrada</option>
                         </select>
                     </div>
                     <div class="col">
-                        <label>Status</label>
-                        <select class="form-control" name="periodo" id="periodo">
-                            <option value="">Selecione o Periodo</option>
+                        <label>Pesquisar por Periodo</label>
+                        <select class="form-select" name="periodo" id="periodo">
+                            <option value=""></option>
                             <option value="1º" <?= $periodo == '1º' ? 'selected' : '' ?>>1º</option>
                             <option value="2º" <?= $periodo == '2º' ? 'selected' : '' ?>>2º</option>
                             <option value="3º" <?= $periodo == '3º' ? 'selected' : '' ?>>3º</option>

@@ -1,115 +1,79 @@
 <?php
-
 namespace App\Entity;
 
-use \App\Db\DataBase;
-use \PDO;
+use App\Db\DataBase;
+use PDO;
+use DateTime;
 
-class Vaga
-{
-
-    /**
-     * Identificador unico da vaga
-     * @var integer
-     */
+class Vaga{
+    
     public $id;
-
-
-    /**
-     * Tituloda da vaga
-     * @var string
-     */
-
     public $titulo;
-
-    /**
-     * descrição da vaga/string
-     */
     public $descricao;
+    public $quantidade;
+    public $remuneracao;
+    public $data_abertura;
+    public $data_fechamento;
+    public $data_criacao;
+/*
+    private $id;
+    private $titulo;
+    private $descricao;
+    private $quantidade;
+    private $remuneracao;
+    private $data_abertura;
+    private $data_fechamento;
+    private $data;
+*/
+    
 
-    /**
-     * define se a vaga é ativa
-     * @var string (s\n)
-     */
-
-    public $ativo;
-
-
-    /**
-     * data fa publicação da vaga 
-     * @var string
-     */
-
-    public $data;
-
-
-    /**
-     * meotodo responsavel por cadastrar uma nova vaga no banco 
-     */
-    public function cadastrar()
-    {
-        //DEFINIR DATA 
-        $this->data = date('Y-m-d H:i:s');
-
-        //INSERIR A VAGA NO BANCO
-        $obDatabase = new DataBase('vagas');
-        $this->id = $obDatabase->insert([
+    public function cadastrar(){
+        $this->data_abertura = date('Y-m-d', strtotime($this->data_abertura));
+        $this->data_fechamento = date('Y-m-d', strtotime($this->data_fechamento));
+        date_default_timezone_set('America/Sao_Paulo');
+        $this->data_criacao = date('y-m-d H:i:s');
+        $banco = new DataBase('vagas');
+        $this->id = $banco->insert([
             'titulo' => $this->titulo,
             'descricao' => $this->descricao,
-            'ativo' => $this->ativo,
-            'data' => $this->data
+            'quantidade' => $this->quantidade,
+            'remuneracao' => $this->remuneracao,
+            'data_abertura' => $this->data_abertura,
+            'data_fechamento' => $this->data_fechamento,
+            'data_criacao' => $this->data_criacao
         ]);
-        //RETORNAR SUCESSO 
-        return true;
-
+        return true;    
     }
-
-    public function atualizar()
-    {
-        return (new DataBase('vagas'))->update('id = ' . $this->id, [
+    public function atualizar(){
+        $this->data_abertura = date('y-m-d', strtotime($this->data_abertura));
+        $this->data_fechamento = date('y-m-d', strtotime($this->data_fechamento));
+        date_default_timezone_set('America/Sao_Paulo');
+        $this->data_criacao = date('y-m-d H:i:s');
+        return (new DataBase('vagas'))->update('id = '.$this->id, [
             'titulo' => $this->titulo,
             'descricao' => $this->descricao,
-            'ativo' => $this->ativo,
-            'data' => $this->data
+            'quantidade' => $this->quantidade,
+            'remuneracao' => $this->remuneracao,
+            'data_abertura' => $this->data_abertura,
+            'data_fechamento' => $this->data_fechamento,
+            'data_criacao' => $this->data_criacao
         ]);
+        
+    }
+    public function excluir(){
+        return (new DataBase('vagas'))->delete('id = '.$this->id);
     }
 
-
-    public function excluir()
-    {
-        return (new DataBase('vagas'))->delete('id = ' . $this->id);
+    public static function getVaga($id){
+        return (new DataBase('vagas'))->select('id = '.$id)->fetchObject(self::class);
     }
-    /**
-     * metodo responsavel por obter as vagas do banco de dados 
-     * @param string $where
-     * @param string $order
-     * @param string $limit
-     * @return array
-     */
-
-
-    public static function getVagas($where = null, $order = null, $limit = null)
-    {
-        return (new DataBase('vagas'))->select($where, $order, $limit)
-            ->fetchAll(PDO::FETCH_CLASS, self::class);
-
-
-    }
-
-    public static function getVaga($id)
-    {
-        return (new DataBase('vagas'))->select('id = ' . $id)
-            ->fetchObject(self::class);
-
+    public static function getVagas($where = null, $order = null, $limit=null){
+        return (new DataBase('vagas'))->select($where, $order,$limit)->fetchAll(PDO::FETCH_CLASS, self::class);
     }
     public static function getQuantidadeVagas($where = null)
     {
         return (new DataBase('vagas'))->select($where, null, null, 'COUNT(*) as qtd')
             ->fetchObject()
             ->qtd;
-
-
     }
-
 }
-

@@ -27,15 +27,14 @@ $condicoes = array_filter($condicoes);
 $where = implode(' AND ',$condicoes);
 
 $quantidadeVagas = Vaga::getQuantidadeVagas($where);
-$obPagination = new Pagination($quantidadeVagas, $_GET['pagina'] ?? 1 , 5);
+$obPagination = new Pagination($quantidadeVagas, $_GET['pagina'] ?? 1 , 10);
 
 $vagas = Vaga:: getVagas($where, null,$obPagination->getLimit());
     
 /*
 echo $quantidadeVagas."<pre>";  
-print_r($obPagination); 
+print_r($vagas); 
 echo "</pre>"; 
-exit;
 */
 
 

@@ -46,6 +46,9 @@ exit;*/
           $obAluno-> curso               =$_POST['curso'];
           $obAluno-> periodo             =$_POST['periodo'] ;
           $obAluno-> dtn                 =$_POST['dtn'];
+          $obAluno-> matricula           = $_POST['matricula'];
+          $obAluno-> senha               = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+          $obAluno-> nivel               = 1;
           if(isset($_FILES['arquivo'])){
        
             $upload = new Upload($_FILES['arquivo']);

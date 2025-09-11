@@ -15,26 +15,30 @@ Login::requereLogin();
     exit;
  }
  //CONSULTAR VAGA
-    $obVaga = Vaga:: getVaga($_GET['id']);
+    $vaga = Vaga:: getVaga($_GET['id']);
     /*echo "<pre>";  
-print_r($obVaga); 
+print_r($vaga); 
 echo "</pre>"; 
 exit;*/
 
 //validação a vaga
-   if(!$obVaga instanceof Vaga){
+   if(!$vaga instanceof Vaga){
     header('location: listar.php?status=error');
     exit;
    }
 
 //VALIDAÇÃO DO POST
-       if(isset($_POST['titulo'], $_POST['descricao'],$_POST['ativo'])){
+       if(isset($_POST['titulo'], $_POST['descricao'])){
 
-              //$obVaga= new Vaga;
-              $obVaga-> titulo     =$_POST['titulo'] ;
-              $obVaga-> descricao  =$_POST['descricao'];
-              $obVaga-> ativo      =$_POST['ativo'];
-              $obVaga-> atualizar() ;
+              //$vaga= new Vaga;
+              $vaga->id =  $_GET['id']; 
+        $vaga->titulo =  $_POST['titulo']; 
+        $vaga->descricao =  $_POST['descricao']; 
+        $vaga->quantidade =  $_POST['quantidade'];
+        $vaga->remuneracao =  $_POST['remuneracao'];
+        $vaga->data_abertura =  $_POST['data_abertura'];
+        $vaga->data_fechamento =  $_POST['data_fechamento']; 
+              $vaga-> atualizar() ;
 
               header('location: listar.php?status=sucess');
               exit;

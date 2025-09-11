@@ -20,7 +20,9 @@ class Aluno{
     public $curso;
     public $periodo;
     public $dtn;
+    public $matricula;
     public $senha;
+    public $nivel;
 
     public function cadastrar(){
         
@@ -37,6 +39,8 @@ class Aluno{
                                             'curso'     => $this->curso,
                                             'periodo'     => $this->periodo,
                                             'dtn'      => $this->dtn,
+                                            'matricula'      => $this->matricula,
+                                            'nivel'      => $this->nivel,
                                             'senha'    => $this->senha
                                         ]);
         //RETORNAR SUCESSO 
@@ -54,6 +58,8 @@ class Aluno{
                                             'curso'     => $this->curso,
                                             'periodo'     => $this->periodo,
                                             'dtn'      => $this->dtn,
+                                            'matricula'      => $this->matricula,
+                                            'nivel'      => $this->nivel,
                                             'senha'    => $this->senha
                                         ]);
     }

@@ -13,15 +13,6 @@ define('TITLE','Cadastrar aluno');
  
  $obAluno= new Aluno;
 
- if(isset($_FILES['arquivo']['error'])){
-       echo "<pre>";  
-   print_r($_FILES['arquivo']); 
-   echo "</pre>";
-   //exit;
-        $upload = new Upload($_FILES['arquivo']);
-        $msg = $upload->upload(__DIR__.'/../images/alunos');
-        
-   }
 //VALIDAÇÃO DO POST
        if(isset($_POST['nome'], $_POST['cpf'],$_POST['curso'],$_POST['periodo'])){
               
@@ -33,7 +24,15 @@ define('TITLE','Cadastrar aluno');
               $obAluno-> curso               = $_POST['curso'];
               $obAluno-> periodo             = $_POST['periodo'] ;
               $obAluno-> dtn                 = $_POST['dtn'];
-              $obAluno-> senha                 = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+              $obAluno-> matricula           = $_POST['matricula'];
+              $obAluno-> senha               = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+              $obAluno-> nivel               = 1;
+              if(isset($_FILES['arquivo'])){
+       
+                     $upload = new Upload($_FILES['arquivo']);
+                     $msg = $upload->upload(__DIR__.'/../images/alunos',$obAluno->cpf);
+                     
+                  }
               $obAluno-> cadastrar() ;
               header('location: listar.php?status=sucess');
               exit;
