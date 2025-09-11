@@ -57,17 +57,10 @@
                 <label>Data de Nascimento</label>
                 <input type="date" class="form-control" name="dtn" value="<?= $obAluno->dtn ?>" required>
             </div>
-<?php 
-if(TITLE == 'Cadastrar aluno' )
-{
-?>    
             <div class="form-group">
                 <label>Senha</label>
                 <input type="password" name="senha" class="form-control" value="">
             </div>
-<?php
-}
-?>
             <div class="form-group">
                 <button type="submit" class="btn btn-success">Enviar</button>
             </div>
