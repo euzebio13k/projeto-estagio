@@ -65,11 +65,11 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    Menu Dropdown
+                    Relatorios
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Submenu 1</a></li>
-                    <li><a class="dropdown-item" href="#">Submenu 2</a></li>
+                    <li><a class="dropdown-item" href="/si/aluno/listar.php">Lista de Alunos</a></li>
+                    <li><a class="dropdown-item" href="/si/inscricao/listar.php">Lista de Inscritos</a></li>
                   </ul>
                 </li>
               </ul>
